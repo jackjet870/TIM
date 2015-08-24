@@ -1,0 +1,31 @@
+﻿@model TIM.Data.Team
+
+<h2>Add team</h2>
+
+<br />
+@using (Html.BeginForm("Update", "Team", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Name)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Sport)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.Sport)
+                @Html.DropDownListFor(m => m.Sport, (IEnumerable<SelectListItem>)ViewBag.sportsList)
+            </td>
+        </tr>
+    </table>
+    @Html.HiddenFor(m => m.TeamId)
+    <input type="submit" value="Update" />
+}

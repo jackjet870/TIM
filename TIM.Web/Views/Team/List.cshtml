@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TIM.Data.Team>
+
+<h2>Teams list</h2>
+
+<p>@TempData["Success"]</p>
+<p>@TempData["Error"]</p>
+
+<p>
+    @Html.ActionLink("Add New", "Add")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sport)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sport)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = (int)item.TeamId })
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Update", new { id = (int)item.TeamId })
+            </td>
+        </tr>
+    }
+
+</table>

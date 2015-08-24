@@ -1,0 +1,37 @@
+﻿@model TIM.Data.Team
+
+<h2>Add team</h2>
+
+<p>@ViewBag.Success</p>
+<p>@ViewBag.Error</p>
+
+<br />
+@using (Html.BeginForm("Add", "Team", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Name)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Sport)
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.Sport, (IEnumerable<SelectListItem>)ViewBag.sportsList)
+                @Html.ValidationMessageFor(m => m.Sport)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Add" class="addEntity" />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

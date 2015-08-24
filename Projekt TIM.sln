@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIM.Web", "TIM.Web\TIM.Web.csproj", "{E453DDFA-7B38-4604-AB10-3D9A76C17BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIM.WebApi", "TIM.WebApi\TIM.WebApi.csproj", "{E57FDE60-3252-4F5C-9331-89CF53527E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIM.Data", "TIM.Data\TIM.Data.csproj", "{593D5150-F4AC-4CCD-8F27-332BFE9064EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E453DDFA-7B38-4604-AB10-3D9A76C17BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E453DDFA-7B38-4604-AB10-3D9A76C17BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E453DDFA-7B38-4604-AB10-3D9A76C17BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E453DDFA-7B38-4604-AB10-3D9A76C17BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57FDE60-3252-4F5C-9331-89CF53527E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57FDE60-3252-4F5C-9331-89CF53527E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57FDE60-3252-4F5C-9331-89CF53527E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57FDE60-3252-4F5C-9331-89CF53527E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593D5150-F4AC-4CCD-8F27-332BFE9064EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593D5150-F4AC-4CCD-8F27-332BFE9064EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593D5150-F4AC-4CCD-8F27-332BFE9064EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593D5150-F4AC-4CCD-8F27-332BFE9064EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

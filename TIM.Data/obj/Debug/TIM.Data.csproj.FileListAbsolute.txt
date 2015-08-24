@@ -1,0 +1,16 @@
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\obj\Debug\TIM.Data.csprojResolveAssemblyReference.cache
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\TIM.Data.dll.config
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\TIM.Data.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\TIM.Data.pdb
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\AutoMapper.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\EntityFramework.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\EntityFramework.SqlServer.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\Newtonsoft.Json.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\System.Net.Http.Formatting.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\AutoMapper.xml
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\EntityFramework.xml
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\EntityFramework.SqlServer.xml
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\Newtonsoft.Json.xml
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\bin\System.Net.Http.Formatting.xml
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\obj\Debug\TIM.Data.dll
+C:\Users\Rafał\Desktop\Projekt TIM\TIM.Data\obj\Debug\TIM.Data.pdb

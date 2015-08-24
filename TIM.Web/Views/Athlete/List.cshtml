@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TIM.Data.Athlete>
+
+<h2>Athletes list</h2>
+
+<p>@TempData["Success"]</p>
+<p>@TempData["Error"]</p>
+
+<p>
+    @Html.ActionLink("Add New", "Add")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = (int)item.AthleteId })
+        </td>
+        <td>
+            @*@using(Html.BeginForm("Update", "Athlete", FormMethod.Get))
+            {
+                @Html.HiddenFor(modelItem => item.AthleteId,)
+                
+                <input value="Update" type="submit" />
+            }*@
+            @Html.ActionLink("Update", "Update", new { id = (int)item.AthleteId })
+        </td>
+    </tr>
+}
+
+</table>

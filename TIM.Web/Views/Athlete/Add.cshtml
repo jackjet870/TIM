@@ -1,0 +1,55 @@
+﻿@model TIM.Data.Athlete
+
+<h2>Add athlete</h2>
+
+<p>@ViewBag.Success</p>
+<p>@ViewBag.Error</p>
+
+<br />
+@using (Html.BeginForm("Add", "Athlete", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.FirstName)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.FirstName, new { @class = "editor-label" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.LastName)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.LastName)
+                @Html.ValidationMessageFor(m => m.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Sport)
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.Sport, (IEnumerable<SelectListItem>)ViewBag.sportsList, "--Select--")
+                @Html.ValidationMessageFor(m => m.Sport)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.TeamId)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.TeamId)
+                @Html.DropDownListFor(m => m.TeamId, (IEnumerable<SelectListItem>)ViewBag.teamsList, "--Select--")
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Add" class="addEntity" />   
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TIM.Data.ModelClasses.EventViewModel>
+
+<h2>Events list</h2>
+
+<p>@TempData["Success"]</p>
+<p>@TempData["Error"]</p>
+
+<p>
+    @Html.ActionLink("Add New", "Add")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Individual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sport)
+            </td>
+            <td>
+                <div style="text-align:center">
+                    @Html.CheckBoxFor(modelItem => item.Individual, new { @disabled = "disabled" })
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateShort)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = (int)item.EventId })
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Update", new { id = (int)item.EventId })
+            </td>
+        </tr>
+    }
+
+</table>

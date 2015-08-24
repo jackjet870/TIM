@@ -1,0 +1,50 @@
+﻿@model TIM.Data.Athlete
+
+<h2>Update athlete</h2>
+
+<br />
+@using (Html.BeginForm("Update", "Athlete", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.FirstName)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.LastName)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Sport)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.Sport)
+                @Html.DropDownListFor(m => m.Sport, (IEnumerable<SelectListItem>)ViewBag.sportsList)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.TeamId)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.TeamId)
+                @Html.DropDownListFor(m => m.TeamId, (IEnumerable<SelectListItem>)ViewBag.teamsList)
+            </td>
+        </tr>
+    </table>
+    @Html.HiddenFor(m => m.AthleteId)
+    @Html.HiddenFor(m => m.TeamId)
+    <input type="submit" value="Update" />
+}

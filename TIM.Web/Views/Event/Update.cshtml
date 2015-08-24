@@ -1,0 +1,193 @@
+﻿@model TIM.Data.ModelClasses.EventViewModel
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+}
+
+@*<script src="@Url.Content("~/Scripts/jquery.globalize/globalize.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.globalize/cultures/globalize.culture.fr-FR.js")" type="text/javascript"></script>*@
+
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+@*dla finalnej wersji odkomentować to i zakomentować @Scripts.Render("~/bundles/jqueryui"), zrobić podobnie z resztą skryptów*@
+@*<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+
+<script>
+    var map;       
+    var marker;
+
+    function initialize() {
+
+        var lat = $('#Latitude').val();
+        lat = lat.replace(',', '.');
+
+        var longi = $('#Longitude').val();
+        longi = longi.replace(',', '.');
+
+        var myCenter = new google.maps.LatLng(lat, longi);
+
+        var mapProp = {
+            center: myCenter,
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            placeMarker(event.latLng);
+        });
+
+        marker = new google.maps.Marker({
+            position: myCenter,
+            map: map,
+        });
+    }
+
+    function placeMarker(location) {
+        if (marker != null)
+            marker.setMap(null);
+
+        $('#Latitude').val(location.lat());
+        $('#Longitude').val(location.lng());
+        replaceDots();
+
+        marker = new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+    }
+
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+
+    function replaceDots() {
+        document.getElementById('Latitude').value = document.getElementById('Latitude').value.replace('.', ',');
+        document.getElementById('Longitude').value = document.getElementById('Longitude').value.replace('.', ',');
+    }
+
+    $(document).ready(function () {
+
+        initialize();
+
+        // nadpisanie walidacji przecinków jako nieprawidłowego separatora dziesiętnego
+        $.validator.methods.range = function (value, element, param) {
+            var globalizedValue = value.replace(",", ".");
+            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+        }
+
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+        }
+    });
+</script>
+
+<h2>Update event</h2>
+
+<p>@ViewBag.Success</p>
+<p>@ViewBag.Error</p>
+
+<br />
+
+<div id="googleMap" style="width:500px; height:350px; float:right">
+</div>
+
+<div style="height:400px">
+
+    @using (Html.BeginForm("Update", "Event", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Sport)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Sport)
+                    @Html.DropDownListFor(m => m.Sport, Model.SportSelectList)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Individual)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(m => m.Individual)
+                    @Html.ValidationMessageFor(m => m.Individual)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Latitude)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Latitude, new{ @id = "Latitude", @readonly = true })
+                    @Html.ValidationMessageFor(m => m.Latitude)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Longitude)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Longitude, new {@id = "Longitude", @readonly = false })
+                    @Html.ValidationMessageFor(m => m.Longitude)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.StartDate)
+                </td>
+                <td>
+                    <div class="form-group input-group-sm">
+                        @Html.EditorFor(m => m.StartDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(m => m.StartDate)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.EndDate)
+                </td>
+                <td>
+                    <div class="form-group input-group-sm">
+                        @Html.EditorFor(m => m.EndDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(m => m.EndDate)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Teams")
+                </td>
+                <td>
+                    @Html.ListBoxFor(m=>m.TeamIds, Model.TeamsSelectList)
+                    @Html.ValidationMessageFor(m => m.TeamIds)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Athletes")
+                </td>
+                <td>
+                    @Html.ListBoxFor(m=>m.AthleteIds, Model.AthletesSelectList)
+                    @Html.ValidationMessageFor(m => m.AthleteIds)
+                </td>
+            </tr>
+        </table>
+        @Html.HiddenFor(m => m.EventId)
+        <input type="submit" value="Update" class="addEntity" />
+    }
+</div>
